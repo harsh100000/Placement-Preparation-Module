@@ -1,2 +1,6 @@
 # Placement-Preparation-Module
-Here, I push the codes of problems I've solved.
+Name - Harsh Vardhan Gautam
+Roll no. - 2000290130077
+Branch - IT
+Section - B
+Semester - 7th
