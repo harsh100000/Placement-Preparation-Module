@@ -1,0 +1,28 @@
+class Solution {
+public:
+    
+    int solve(string s, int k, char c)
+    {
+        int head=0, tail=0, ans=0;
+        while(head<s.length())
+        {
+            char ch = s[head];
+            if(ch!=c) k--;
+            while(k<0)
+            {
+                if(s[tail]==c) tail++;
+                else {
+                    k++;
+                    tail++;
+                }
+            }
+            ans = max(ans,head-tail+1);
+            head++;
+        }
+        return ans;
+    }
+    
+    int maxConsecutiveAnswers(string s, int k) {
+        return max(solve(s,k,'T'), solve(s,k,'F'));
+    }
+};
