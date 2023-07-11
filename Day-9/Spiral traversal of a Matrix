@@ -1,0 +1,47 @@
+vector<int> spirallyTraverse(vector<vector<int> > a, int n, int m) 
+    {
+        int cnt=0;
+ 		int maxcnt=n*m;
+ 		vector<int> ans;
+ 		int row=0;
+ 		int col=0;
+ 		int maxrow=n-1;
+ 		int maxcol=m-1;
+ 		while(cnt<maxcnt)
+ 		{
+ 		    for(int i=col; i<=maxcol; i++)
+ 		    {
+ 		        ans.push_back(a[row][i]);
+ 		        cnt++;
+ 		     //   if(cnt==k) return a[row][i];
+ 		    }
+ 		    row++;
+ 		    
+ 		    for(int i=row; i<=maxrow; i++)
+ 		    {
+ 		        ans.push_back(a[i][maxcol]);
+ 		        cnt++;
+ 		     //   if(cnt==k) return a[i][maxcol];
+ 		    }
+ 		    maxcol--;
+ 		    
+ 		    for(int i=maxcol; i>=col; i--)
+ 		    {
+ 		        ans.push_back(a[maxrow][i]);
+ 		        cnt++;
+ 		     //   if(cnt==k) return a[maxrow][i];
+ 		    }
+ 		    maxrow--;
+ 		    
+ 		    for(int i=maxrow; i>=row; i--)
+ 		    {
+ 		        ans.push_back(a[i][col]);
+ 		        cnt++;
+ 		     //   if(cnt==k) return a[i][col];
+ 		    }
+ 		    col++;
+ 		    
+ 		}
+//  		reverse(ans.begin(), ans.end());
+ 		return ans;
+    }
