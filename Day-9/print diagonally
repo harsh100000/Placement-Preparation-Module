@@ -1,0 +1,17 @@
+vector<int> downwardDiagonal(int n, vector<vector<int>> a)
+	{
+		vector<int> ans;
+		vector<vector<int>> v(n+n-1) ;
+		for(int i=0; i<n; i++)
+		{
+		    for(int j=0; j<n; j++)
+		    {
+		        v[i+j].push_back(a[i][j]);
+		    }
+		}
+		for(int i=0; i<n+n-1; i++)
+		{
+		    ans.insert(ans.end(), v[i]. begin(), v[i].end());
+		}
+		return ans;
+	}
