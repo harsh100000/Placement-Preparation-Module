@@ -1,0 +1,21 @@
+int minRow(int N, int M, vector<vector<int>> A) {
+        int ansrow=INT_MAX;
+        int minones=INT_MAX;
+        for(int i=0; i<N;i++)
+        {
+            int onecnt=0;
+            for(int j=0; j<M; j++)
+            {
+                if(A[i][j]==1)
+                {
+                    onecnt++;
+                }
+            }
+            if(onecnt<minones)
+            {
+                ansrow=i+1;
+                minones = onecnt;
+            }
+        }
+        return ansrow;
+    }
