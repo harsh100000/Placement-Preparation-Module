@@ -1,0 +1,13 @@
+
+class Solution{
+    public:
+       long power(int N,int R){
+        if(N==0) return 0;
+        if(R==0)return 1;
+        long ans=power(N,R/2);
+        ans=(ans*ans)%1000000007;
+        if(R%2==1)
+        ans=(ans*N)%1000000007;
+        return ans;
+        }  
+};
