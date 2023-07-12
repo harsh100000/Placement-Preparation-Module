@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int alternatingSubarray(vector<int>& nums) {
+        int n = nums.size();
+        int maxi=-1;
+        for(int i=1; i<n; i++)
+        {
+            int j=i;
+            int cnt=1;
+            bool flag = true;
+            while((j<n and flag==true and nums[j]-nums[j-1]==1) or (j<n and flag==false and nums[j]-nums[j-1]==-1))
+            {
+                cnt++;
+                flag = !flag;
+                j++;
+            }
+            maxi = max(maxi,cnt);
+        }
+        if(maxi==1) return -1;
+        return maxi;
+    }
+};
