@@ -1,0 +1,33 @@
+class Solution
+{
+    public:
+    
+    // Recursive + memoization
+    int solve(int index, int capacity, int wt[], int val[], int n, vector<vector<int>> &dp)
+    {
+        if(index==0)
+        {
+            if(wt[index]<=capacity)
+            {
+                return val[index];
+            }
+            else return 0;
+        }
+        if(dp[index][capacity]!=-1) return dp[index][capacity];
+        int inc=0, exc=0;
+        if(wt[index]<=capacity)
+        {
+            inc = val[index] + solve(index-1, capacity-wt[index], wt,val,n,dp);
+        }
+        exc = solve(index-1, capacity, wt,val,n,dp);
+        
+        dp[index][capacity] = max(inc,exc);
+        return dp[index][capacity];
+    }
+    
+    int knapSack(int W, int wt[], int val[], int n) 
+    { 
+        vector<vector<int>> dp(n, vector<int>(W+1,-1));
+       return solve(n-1,W,wt,val,n, dp);
+    }
+};
