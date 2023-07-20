@@ -1,0 +1,13 @@
+char nonrepeatingCharacter(string S)
+    {
+        map<char,int> mpp;
+        for(int i=0; i<S.length(); i++) mpp[S[i]]++;
+        for(int i=0; i<S.length(); i++)
+        {
+            if(mpp[S[i]]==1)
+            {
+                return S[i];
+            }
+        }
+        return '$';
+    }
