@@ -1,0 +1,19 @@
+int solve(int i, vector<int> &nums, int n, vector<int> &dp)
+    {
+        if(i>=n) return 0;
+        if(dp[i]!=-1) return dp[i];
+        int pick = solve(i+2, nums, n, dp) + nums[i];
+        int not_pick = solve(i+1, nums, n, dp);
+        return dp[i] = max(pick,not_pick);
+    }
+    
+    int rob(vector<int>& nums) {
+        int i=0;
+        int n = nums.size();
+        if(n==1) return nums[0];
+        if(n==2) return max(nums[0],nums[1]);
+        vector<int> dp1(n+1, -1) , dp2(n+1, -1);
+        int exL = solve(i, nums, n-1, dp1);
+        int exF = solve(1, nums, n, dp2);
+        return max(exL,exF);
+    }
