@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isGood(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        
+        map<int, int> mpp;
+        for(auto it : nums) mpp[it]++;
+        
+        for(int i = 1; i < n-1; i++)
+        {
+            if(mpp.find(i) == mpp.end()) return false;
+            if(mpp[i] != 1) return false;
+        }
+        
+        if(mpp.find(n-1) == mpp.end()) return false;
+        if(mpp[n-1] != 2) return false;
+        
+        return true;
+    }
+};
