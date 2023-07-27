@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> numberOfPairs(vector<int>& nums) {
+        vector<int> ans;
+        map<int,int> mpp;
+        int countremove=0;
+        int left = 0;
+        for(auto it:nums) mpp[it]++;
+        for(auto it:mpp)
+        {
+            int x = it.second/2;
+            if(it.second%2==0)
+            {
+                
+                countremove+=x;
+            }
+            else
+            {
+                countremove+=x;
+                left++;
+            }
+        }
+        ans.push_back(countremove);
+        ans.push_back(left);
+        return ans;
+    }
+};
