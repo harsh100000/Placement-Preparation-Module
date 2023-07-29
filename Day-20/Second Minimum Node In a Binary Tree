@@ -1,0 +1,31 @@
+class Solution {
+public:
+    
+    void solve(TreeNode* root, vector<int> &v)
+    {
+        if(root==NULL) return;
+        solve(root->left, v);
+        v.push_back(root->val);
+        solve(root->right, v);
+    }
+    
+    int findSecondMinimumValue(TreeNode* root) {
+        vector<int> v;
+        solve(root,v);
+        sort(v.begin(), v.end());
+        if(v.size()==1) return -1;
+        int i=1;
+        while(i<v.size())
+        {
+            if(v[i]==v[i-1])
+            {
+                i++;
+            }
+            else
+            {
+                return v[i];
+            }
+        }
+        return -1;
+    }
+};
