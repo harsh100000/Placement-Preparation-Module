@@ -1,0 +1,21 @@
+void solve(Node *root, vector<Node*> &v)
+    {
+        if(root==NULL) return;
+        solve(root->left, v);
+        v.push_back(root);
+        solve(root->right, v);
+    }
+  
+    Node * inOrderSuccessor(Node *root, Node *x)
+    {
+        vector<Node*> v;
+        solve(root, v);
+        for(int i=0; i<v.size()-1; i++)
+        {
+            if(x->data==v[i]->data)
+            {
+                return v[i+1];
+            }
+        }
+        return NULL;
+    }
