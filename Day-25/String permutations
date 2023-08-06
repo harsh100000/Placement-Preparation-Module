@@ -1,0 +1,23 @@
+void solve(int index, string s, vector<string> &ans)
+    {
+        if(index>=s.length())
+        {
+            ans.push_back(s);
+            return;
+        }
+        for(int i=index; i<s.length(); i++)
+        {
+            swap(s[index],s[i]);
+            solve(index+1, s, ans);
+            swap(s[index],s[i]);
+        }
+    }
+
+    vector<string> permutation(string S)
+    {
+        vector<string> ans;
+        int index=0;
+        solve(index, S, ans);
+        sort(ans.begin(), ans.end());
+        return ans;
+    }
