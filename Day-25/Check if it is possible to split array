@@ -1,0 +1,21 @@
+class Solution {
+public:
+    
+    bool solve(vector<int>& nums, int st, int end, int m, int totalSum, vector<vector<int>> &dp)
+    {
+        if(st==end) return true;
+        if(totalSum<m) return false;
+        if(dp[st][end]!=-1) return dp[st][end];
+        bool ans = solve(nums, st+1, end, m, totalSum-nums[st], dp) || solve(nums, st, end-1, m, totalSum-nums[end], dp);
+        dp[st][end] = ans;
+        return ans;
+    }
+    
+    bool canSplitArray(vector<int>& nums, int m) {
+        int n = nums.size();
+        vector<vector<int>> dp(n,vector<int>(n,-1));
+        if(n<=2) return true;
+        int totalSum = accumulate(nums.begin(), nums.end(), 0);
+        return solve(nums, 0, n-1, m, totalSum, dp);
+    }
+};
