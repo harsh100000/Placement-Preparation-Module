@@ -1,0 +1,28 @@
+class Solution
+{
+    public:
+    int countFractions(int n, int numerator[], int denominator[])
+    {
+        map<pair<int,int>, int> mpp;
+        int count=0;
+        for(int i=0; i<n; i++)
+        {
+            int gcd = __gcd(numerator[i], denominator[i]);
+            numerator[i]/=gcd;
+            denominator[i]/=gcd;
+        }
+        
+        for(int i=0; i<n; i++)
+        {
+            int tofindnum = denominator[i]-numerator[i];
+            int tofinddeno = denominator[i];
+            pair<int,int> p = {tofindnum,tofinddeno};
+            if(mpp.find(p) != mpp.end())
+            {
+                count+=mpp[p];
+            }
+            mpp[{numerator[i],denominator[i]}]++;
+        }
+        return count;
+    }
+};
